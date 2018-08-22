@@ -4,14 +4,16 @@ source("rfile/functions.R")
 source("module/module_placeWidget.R")
 library(networkD3)
 library(flipPlots)
+library(shinyAce)
+
 #library(DT)
 dataWidgets <- read.csv("data/dataWidgets.csv", sep = ";", dec = ",", header = T, stringsAsFactors = 
                           F)
 
 
-widgetChoises <- c("sankey", "table")
+widgetChoises <- dataWidgets$widget
 
-widgetPackages <- c("flipPlots", "dataTable")
+widgetPackages <- dataWidgets$package
 
 
 widgetDatas <- c("data_to_sankey_flipPlots", "cars")
