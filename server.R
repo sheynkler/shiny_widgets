@@ -7,11 +7,11 @@ shinyServer(function(input, output, session) {
              "m_name_placeWidget",
              widget_r,
              package_r,
-             data_r,
+             #data_r,
              draw_r)
   widget_r <- reactive(input$widget)
   package_r <- reactive(input$package)
-  data_r <- reactive(input$data)
+  #data_r <- reactive(input$data)
   draw_r <- reactive(input$draw)
   
   observeEvent(input$first, {
@@ -54,5 +54,15 @@ shinyServer(function(input, output, session) {
     }
     # else updateSelectInput(session, "widget", label = paste("Widgets for", input$package), choices = unique(dataWidgets$widget[dataWidgets$package == input$package]))
   })
+  # observe({
+  #   updateSelectInput(
+  #     session,
+  #     "data",
+  #     label = paste("Data for", input$widget, input$package),
+  #     choices = unique(dataWidgets$data[dataWidgets$widget == input$widget & dataWidgets$package == input$package])
+  #   )
+  #   
+  # })
+  
   
 })
