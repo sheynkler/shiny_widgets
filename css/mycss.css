@@ -1,0 +1,4 @@
+.scroll_auto{
+  overflow-y:hidden;
+  overflow-x:auto;
+}

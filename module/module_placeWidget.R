@@ -121,9 +121,13 @@ mf_s_placeWidget <-
       removeUI("#code_tutorial_div")
       insertUI(selector = "#titel_div",
                where = "afterEnd",
-               ui = tagList(if (exists(output_function))
+               ui = tagList(
+                 div(class = "scroll_auto",
+                                    if (exists(output_function))
                  do.call(
                    output_function, list(input, output, session, id = place_id)
+                 )
+
                  )))
       
       DATA$ui <- paste0("#m_name_placeWidget-", place_id)
