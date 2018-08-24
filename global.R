@@ -1,3 +1,4 @@
+rm(list = ls())
 source("rfile/data.R")
 source("rfile/functions.R")
 source("module/module_placeWidget.R")

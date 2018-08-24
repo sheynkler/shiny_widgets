@@ -132,7 +132,10 @@ mf_s_placeWidget <-
       
       DATA$ui <- paste0("#m_name_placeWidget-", place_id)
       row_widget <- row_widget_r()
-      DATA$title <- row_widget$title[1]
+      title <- paste(widget_r(), "with", package_r())
+      title <- paste0(toupper(substr(title, 1, 1)), substr(title, 2, 40))
+      DATA$title <- title
+      
     })
     
     row_widget_r <- reactive({

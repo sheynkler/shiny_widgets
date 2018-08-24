@@ -1,0 +1,19 @@
+1;23
+1;23
+6;237
+scatter;plotly;cars
+
+draw_scatter_plotly <- function(input, output, session){
+  renderPlotly({
+    plot_ly(cars, x = ~dist, y = ~speed)
+  })
+}
+output_scatter_plotly <-  function(input, output, session, id) plotlyOutput(session$ns(id))
+scatter;plotly;cars
+draw_scatter_plotly <- function(input, output, session){
+  renderPlotly({
+    plot_ly(cars, x = ~dist, y = ~speed)
+  })
+}
+output_scatter_plotly <-  function(input, output, session, id) plotlyOutput(session$ns(id))
+scatter;plotly;cars

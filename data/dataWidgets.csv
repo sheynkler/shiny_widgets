@@ -1,3 +1,6 @@
-n;widget;package;title;data
-1;sankey;flipPlots;SankeyDiagram with flipPlots;data_to_sankey_flipPlots
-2;table;dataTable;Table with DataTable;cars
+widget;package;data
+sankey;flipPlots;data_to_sankey_flipPlots
+table;dataTable;cars
+scatter;plotly;cars
+lines;plotly;cars
+bar;plotly;
