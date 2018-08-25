@@ -1,10 +1,18 @@
 # function
+rm(list = ls())
+draw_function <- "<- function(input, output, session){
+  draw_function
+}"
+
+out_function <- "<-  function(input, output, session, id) out_function(session$ns(id))"
+library_line <- "library(lib_package);"
+# new data
 
 write_data_to_R <- function(widget, package, data){
   lineLibrary <- gsub("lib_package", package, library_line)
   write(lineLibrary, file="rfile/librarys.R", append=TRUE)
   
-  line_csv <- paste(widget, package, data, sep = ";")
+  line_csv <- paste(widget, package,  sep = ";")
   write(line_csv, file="data/dataWidgets.csv", append=TRUE)
   write(paste(Sys.time(), line_csv), file="data/log.txt", append=TRUE)
   

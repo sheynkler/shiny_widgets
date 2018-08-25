@@ -25,10 +25,10 @@ mf_ui_placeWidget <- function(id) {
                      h4("Server:"),
                      uiOutput(ns("ui_code_server")),
                      h4("UI:"),
-                     uiOutput(ns("ui_code_ui")),
+                     uiOutput(ns("ui_code_ui"))#,
                      #uiOutput(ns("ui_code_ui2")),
-                     h4("Data:"),
-                     tableOutput(ns("data"))
+                     # h4("Data:"),
+                     # tableOutput(ns("data"))
                    )))
   
   
@@ -47,14 +47,7 @@ mf_s_placeWidget <-
     DATA$title <- NULL
     DATA$code_server <- "Hier wird server Code angezeigt"
     DATA$code_ui <- "Hier wird UI Code angezeigt"
-    #DATA$data <- NULL
-    #DATA$data_to_draw <- NULL
-    
-    # output$data <- renderTable({
-    #   DATA$data_to_draw
-    #   # if(draw_r() == 0) return(NULL)
-    #   # mydata_r()
-    # })
+
     
     output$ui_code_server <- renderUI({
       
@@ -131,26 +124,26 @@ mf_s_placeWidget <-
                  )))
       
       DATA$ui <- paste0("#m_name_placeWidget-", place_id)
-      row_widget <- row_widget_r()
+      # row_widget <- row_widget_r()
       title <- paste(widget_r(), "with", package_r())
       title <- paste0(toupper(substr(title, 1, 1)), substr(title, 2, 40))
       DATA$title <- title
       
     })
     
-    row_widget_r <- reactive({
-      widget <- widget_r()
-      package <- package_r()
-      row <-
-        dataWidgets[dataWidgets$widget == widget &
-                      dataWidgets$package == package, ]
-    })
+    # row_widget_r <- reactive({
+    #   widget <- widget_r()
+    #   package <- package_r()
+    #   row <-
+    #     dataWidgets[dataWidgets$widget == widget &
+    #                   dataWidgets$package == package, ]
+    # })
     output$title <- renderText({
       # row_widget <- row_widget_r()
       # row_widget$title[1]
       DATA$title
     })
-    mydata_r <- reactive({
-      eval(parse(text = data_r()))
-    })
+    # mydata_r <- reactive({
+    #   eval(parse(text = data_r()))
+    # })
   }

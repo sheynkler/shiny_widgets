@@ -1,31 +1,27 @@
+source("rfile/function_to_write.R")
 
-# KOnstante string
-
-draw_function <- "<- function(input, output, session){
-  draw_function
-}"
-
-out_function <- "<-  function(input, output, session, id) out_function(session$ns(id))"
-library_line <- "library(lib_package);"
-# new data
-
-
-widget <- "bar"
+widget <- "Gauge"
 package <- "plotly"
-data <- NULL
+
 
 draw_insert <- 'renderPlotly({
-        plot_ly(
-      x = c("giraffes", "orangutans", "monkeys"),
-      y = c(20, 14, 23),
-      name = "SF Zoo",
-      type = "bar"
-    )
+density <- density(diamonds$carat)
+p <- plot_ly(
+      type = "sankey",
+node = list(
+label = c("A1", "A2", "B1", "B2", "C1", "C2")
+),
+link = list(
+source = c(0,1,0,2,3,3),
+target = c(2,3,3,4,4,5),
+value =  c(8,4,2,8,4,2)
+)
+)
   })'
 
 out_insert <- "plotlyOutput"
 
 # GO!
-source("rfile/function_to_write.R")
+
 write_data_to_R(widget, package, data)
 

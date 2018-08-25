@@ -15,7 +15,7 @@ widgetChoises <- dataWidgets$widget
 widgetPackages <- dataWidgets$package
 
 
-widgetDatas <- dataWidgets$data
+# widgetDatas <- dataWidgets$data
 
 # DRAWFUNCTION <- "draw_sankey_flipPlots"
 #index = 1

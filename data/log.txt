@@ -25,3 +25,77 @@ draw_bar_plotly <- function(input, output, session){
   })
 }
 output_bar_plotly <-  function(input, output, session, id) plotlyOutput(session$ns(id))
+2018-08-25 12:25:19 GroupedBar;plotly;
+draw_GroupedBar_plotly <- function(input, output, session){
+  renderPlotly({
+Animals <- c("giraffes", "orangutans", "monkeys")
+SF_Zoo <- c(20, 14, 23)
+LA_Zoo <- c(12, 18, 29)
+data <- data.frame(Animals, SF_Zoo, LA_Zoo)
+plot_ly(data, x = ~Animals, y = ~SF_Zoo, type = "bar", name = "SF Zoo") %>%
+  add_trace(y = ~LA_Zoo, name = "LA Zoo") %>%
+  layout(yaxis = list(title = "Count"), barmode = "group")
+  })
+}
+output_GroupedBar_plotly <-  function(input, output, session, id) plotlyOutput(session$ns(id))
+2018-08-25 12:34:28 StackedBar;plotly
+draw_StackedBar_plotly <- function(input, output, session){
+  renderPlotly({
+Animals <- c("giraffes", "orangutans", "monkeys")
+SF_Zoo <- c(20, 14, 23)
+LA_Zoo <- c(12, 18, 29)
+data <- data.frame(Animals, SF_Zoo, LA_Zoo)
+plot_ly(data, x = ~Animals, y = ~SF_Zoo, type = "bar", name = "SF Zoo") %>%
+  add_trace(y = ~LA_Zoo, name = "LA Zoo") %>%
+  layout(yaxis = list(title = "Count"), barmode = "stack")
+  })
+}
+output_StackedBar_plotly <-  function(input, output, session, id) plotlyOutput(session$ns(id))
+2018-08-25 12:41:11 Pie;plotly
+draw_Pie_plotly <- function(input, output, session){
+  renderPlotly({
+Animals <- c("giraffes", "orangutans", "monkeys")
+SF_Zoo <- c(20, 14, 23)
+data <- data.frame(Animals, SF_Zoo)
+plot_ly(data, labels = ~Animals, values = ~SF_Zoo, type = "pie")
+  })
+}
+output_Pie_plotly <-  function(input, output, session, id) plotlyOutput(session$ns(id))
+2018-08-25 13:49:48 Bubble;plotly
+draw_Bubble_plotly <- function(input, output, session){
+  renderPlotly({
+    data <- LifeCycleSavings
+    data$text <- row.names(LifeCycleSavings)
+    plot_ly(data, x = ~sr, y = ~pop15, text = ~text, type = "scatter", mode = "markers",
+            marker = list(size = ~dpi/100, opacity = 0.5))
+  })
+}
+output_Bubble_plotly <-  function(input, output, session, id) plotlyOutput(session$ns(id))
+2018-08-25 13:57:37 Area;plotly
+draw_Area_plotly <- function(input, output, session){
+  renderPlotly({
+density <- density(diamonds$carat)
+p <- plot_ly(x = ~density$x, y = ~density$y, type = "scatter", mode = "lines", fill = "tozeroy") %>%
+  layout(xaxis = list(title = "Carat"),
+         yaxis = list(title = "Density"))
+  })
+}
+output_Area_plotly <-  function(input, output, session, id) plotlyOutput(session$ns(id))
+2018-08-25 15:37:27 sankey;plotly
+draw_sankey_plotly <- function(input, output, session){
+  renderPlotly({
+density <- density(diamonds$carat)
+p <- plot_ly(
+      type = "sankey",
+node = list(
+label = c("A1", "A2", "B1", "B2", "C1", "C2")
+),
+link = list(
+source = c(0,1,0,2,3,3),
+target = c(2,3,3,4,4,5),
+value =  c(8,4,2,8,4,2)
+)
+)
+  })
+}
+output_sankey_plotly <-  function(input, output, session, id) plotlyOutput(session$ns(id))
